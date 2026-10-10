@@ -12,7 +12,7 @@ cdp.documentation()          // 先读，命令名以实际返回为准
 ```
 
 1. 调 `Network.enable`，然后 `tab.reload()`。
-   **坑：首次/单独调用 `Network.enable` 会出现 REPL 超时（60s/20s），但它其实已经启用。**
+   **坑：首次/单独调用 `Network.enable` 可能出现 REPL 超时（60s/20s）；超时后先检查网络事件，可能已启用。**
    不要据此判定"不支持 CDP"——恢复句柄后其他命令都是秒级返回。
 2. 分页读 `Network.responseReceived` / `Network.loadingFinished`，按 `response.url` 的 pathname 筛选目标接口。
 3. 取响应体：
@@ -24,14 +24,11 @@ cdp.documentation()          // 先读，命令名以实际返回为准
    返回 `{ body, base64Encoded }`；`base64Encoded` 为 false 时直接 `JSON.parse`。
 4. **在脚本里解析**，只把精简字段传出来；不要 write 整个 body。
 
-## 闲鱼搜索（实测 2026-10-10）
+## 站点配方
 
-- 接口：`/h5/mtop.taobao.idlemtopsearch.pc.search/1.0/`，状态 200，body 约 302k 字符
-- `ret` = `["SUCCESS::调用成功"]`
-- 列表在 **`data.resultList`**（不是 `itemList`），单页 30 条
-- 每条在 `r.data.item.main.exContent`，含 `itemId` / `title` / `area` / `price`
-- **`price` 是样式数组**：过滤掉 `type === 'sign'` 的段，拼 `text` 再转数值
-- 校验过：30 条 ID/price 与同次 DOM 里的 30 条完全一致
+已知站点的接口与字段在 `sites/`。
+
+给新站点做配方（经用户确认后）：照 `sites/闲鱼.md` 的形状写，**"验证"一行不能省**——未来靠它决定直接信还是重新验。
 
 ## 取 HTML 的注意
 
