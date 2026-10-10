@@ -1,23 +1,23 @@
 # Shopping Skill
 
-帮助 Agent 按实际需求选购商品：理解需求、建立筛选标准、搜索候选、调查型号问题、验证具体商品并给出建议。适用于全新和二手商品。
+按实际需求选购商品（全新或二手）：澄清需求 → 筛选候选 → 查型号问题 → 验证具体商品 → 给建议。
 
-本项目仅包含 Skill，搜索和浏览使用 Agent 当前可用的工具，无需安装专用采集程序。
-
-## 在 Codex 中使用
-
-将本仓库下载到 Codex 的 `skills/shopping` 目录，确保路径为：
+## 安装
 
 ```text
 ~/.codex/skills/shopping/SKILL.md
 ```
 
-Windows 默认位置为 `%USERPROFILE%\.codex\skills\shopping`；设置了 `CODEX_HOME` 时，使用该目录下的 `skills\shopping`。
+Windows 默认 `%USERPROFILE%\.codex\skills\shopping`；设了 `CODEX_HOME` 则用其下的 `skills\shopping`。
 
-重新加载 Codex，在新聊天中输入：
+重新加载 Codex，新聊天里输入：
 
 ```text
 $shopping 帮我找一台4000元以内的RTX 3060游戏本，用来打FPS。
 ```
 
-也可以用于吹风机、鼠标垫、电动牙刷等商品；判断重点由 Agent 根据品类和用途决定。
+## 依赖
+
+搜索浏览用 Agent 现有工具，不需要额外安装程序。
+
+`references/cdp-interface.md` 的接口取数需要 harness 提供带 CDP 的浏览器（Codex 内置浏览器可以）。没有就退回普通搜索浏览，skill 其余部分不受影响。
