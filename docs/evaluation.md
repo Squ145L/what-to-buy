@@ -8,7 +8,7 @@
 每个场景先**不带 skill** 跑一遍（基线），再**带 skill 连跑 3 次**。
 三次一起看才分得清单次波动和稳定行为。
 
-Codex 里用 `$shopping` 触发（本机装在 `~/.codex/skills/shopping`）；不带 skill 就用同一句话、不写 `$shopping`。
+Codex 里用 `$what-to-buy` 触发（本机装在 `~/.codex/skills/what-to-buy`）；不带 skill 就用同一句话、不写 `$what-to-buy`。
 
 ## 每次记四项
 
@@ -23,7 +23,7 @@ Codex 里用 `$shopping` 触发（本机装在 `~/.codex/skills/shopping`）；�
 
 ```json
 {
-  "skills": ["shopping"],
+  "skills": ["what-to-buy"],
   "query": "这两个 1TB PCIe4 固态选哪个：三星 990 Pro 和西数 SN850X，价格差不多。",
   "files": [],
   "expected_behavior": [
@@ -39,7 +39,7 @@ Codex 里用 `$shopping` 触发（本机装在 `~/.codex/skills/shopping`）；�
 
 ```json
 {
-  "skills": ["shopping"],
+  "skills": ["what-to-buy"],
   "query": "300 块左右买个通勤用的无线降噪耳机，帮我挑一个。",
   "files": [],
   "expected_behavior": [
@@ -57,7 +57,7 @@ Codex 里用 `$shopping` 触发（本机装在 `~/.codex/skills/shopping`）；�
 
 ```json
 {
-  "skills": ["shopping"],
+  "skills": ["what-to-buy"],
   "query": "4000 以内，闲鱼收一台二手游戏本打 FPS。",
   "files": [],
   "expected_behavior": [
